@@ -1,1 +1,25 @@
-# xml_tienda
+# Prácticas de tienda de XML
+1. Menú
+2. Agregar Compra
+3. Agregar Venta
+4. Mostrar datos
+
+## Formato final del XML
+```
+<datos>
+    <ventas>
+        <producto codigo="1" tipo="A">
+            <nombre></nombre>
+            <descripcion></descripcion>
+            <precio></precio>
+        </producto>
+    </ventas>
+    <compras>
+        <producto codigo="1" tipo="A">
+            <nombre></nombre>
+            <descripcion></descripcion>
+            <precio></precio>
+        </producto>
+    </compras>
+</datos>
+```
