@@ -1,4 +1,6 @@
 # Prácticas de tienda de XML
+>[!IMPORTANT]
+> Práctica importante para el examen, se tomará como ejercicio de preparación
 1. Menú
 2. Agregar Compra
 3. Agregar Venta
