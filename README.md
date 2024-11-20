@@ -5,6 +5,8 @@
 2. Agregar Compra
 3. Agregar Venta
 4. Mostrar datos
+5. Mostrar los productos cuyo precio sea mayor que el leído por teclado
+6. Mostrar los productor del tipo del leído por teclado
 
 ## Formato final del XML
 ```
