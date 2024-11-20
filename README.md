@@ -2,11 +2,10 @@
 >[!IMPORTANT]
 > Práctica importante para el examen, se tomará como ejercicio de preparación
 1. Menú
-2. Agregar Compra
-3. Agregar Venta
-4. Mostrar datos
-5. Mostrar los productos cuyo precio sea mayor que el leído por teclado
-6. Mostrar los productor del tipo del leído por teclado
+2. Agregar Compra o Venta
+3. Mostrar datos
+4. Mostrar los productos cuyo precio sea mayor que el leído por teclado
+5. Mostrar los productor del tipo del leído por teclado
 
 ## Formato final del XML
 ```
