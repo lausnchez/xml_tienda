@@ -6,6 +6,7 @@
 3. Mostrar datos
 4. Mostrar los productos cuyo precio sea mayor que el leído por teclado
 5. Mostrar los productor del tipo del leído por teclado
+6. Mostrar todos los productos que sean de un tipo leído por teclado y tengan un precio superior a la media
 
 ## Formato final del XML
 ```
