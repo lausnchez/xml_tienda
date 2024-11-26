@@ -1,18 +1,20 @@
 package mainPackage;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.IOException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -26,7 +28,9 @@ public class GestorDOM {
 	/***
 	 * Primero crea un documentBuilderFactory que se crea una instancia que permite usar el
 	 * DocumentBuilder. Una vez creada la factory nos creamos un nuevo DocumentBuilder y un
-	 * nuevo documento con su método y se lo asignamos a los atributos de la clase
+	 * nuevo documento con su método y se lo asignamos a los atributos de la clase.
+	 * En resumen, sirve para asignar valores al Document y al DocumentBuilder (que necesita
+	 * el DocumentBuilderFactory)
 	 */
 	public GestorDOM() {
 		DocumentBuilderFactory dBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -39,15 +43,16 @@ public class GestorDOM {
 	}
 	
 	/**
-	 * Primero generamos una instancia del TransformerFactory, el cual nos permitirá
-	 * crear un transformer.
+	 * Nos guarda físicamente el documento
 	 */
-	public void generarDocumentoArchivos() {
+	public void guardarDocumento() {
 		try {
 			TransformerFactory transFactory = TransformerFactory.newInstance();
-			Transformer trans = transFactory.newTransformer();			
-			DOMSource origen =  new DOMSource(doc);
-			Result resultado = new StreamResult(new File("compraVenta.xml"));		
+			Transformer trans = transFactory.newTransformer();	
+			
+			Source origen =  new DOMSource(doc);
+			Result resultado = new StreamResult(new File("compraVenta.xml"));	
+			
 			trans.setOutputProperty(OutputKeys.INDENT,"yes");
 			trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 		} catch (TransformerConfigurationException e) {
@@ -63,7 +68,7 @@ public class GestorDOM {
 	public void inicializarArchivoNuevo() {
 		Element raiz = doc.createElement("datos");
 		doc.appendChild(raiz);
-		generarDocumentoArchivos();
+		guardarDocumento();
 	}
 	
 	/**
