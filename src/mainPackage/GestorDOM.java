@@ -11,6 +11,7 @@ import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
@@ -55,25 +56,41 @@ public class GestorDOM {
 			
 			trans.setOutputProperty(OutputKeys.INDENT,"yes");
 			trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+			
+			trans.transform(origen, resultado);
+			
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		} catch (TransformerFactoryConfigurationError e) {
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Generar el archivo raiz en el archivo
+	 * Debe usarse al inicializar el proyecto. En caso de que no se pueda
+	 * parsear el documento (es decir, no exista) nos generará uno nuevo.
 	 */
+	public void inicializarDocumento() {
+		try {
+			this.doc = dBuilder.parse(direccionDoc);
+		} catch (SAXException | IOException e) {
+			this.doc = dBuilder.newDocument();
+			Element raiz = doc.createElement("datos");
+			doc.appendChild(raiz);
+			guardarDocumento();
+		}
+	}
+	
+	/*
 	public void inicializarArchivoNuevo() {
 		Element raiz = doc.createElement("datos");
 		doc.appendChild(raiz);
 		guardarDocumento();
 	}
 	
-	/**
-	 * Importar el archivo XML ya creado en el programa
-	 */
 	public void importarXML() {
 		try {
 			this.doc = dBuilder.parse(direccionDoc);
@@ -82,6 +99,5 @@ public class GestorDOM {
 			e.printStackTrace();
 		}
 	}
-	
-	
+	*/
 }

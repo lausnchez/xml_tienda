@@ -28,6 +28,8 @@ import java.io.File;
  *		
  *			trans.setOutputProperty(OutputKeys.INDENT,"yes");
  *			trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+ *
+ *			trans.tranform(origen, resultado);
  * 
  * En caso de querer importar un archivo deberemos usar el DocumentBuilder para 
  * parsearlo, pasándole la dirección del archivo xml (this.doc = dBuilder.parse(direccionDoc);).
@@ -53,6 +55,7 @@ public class main {
 	static GestorDOM gDOM = new GestorDOM();
 	
 	public static void main(String[] args) {
+		gDOM.inicializarDocumento();
 		menu();
 
 	}
