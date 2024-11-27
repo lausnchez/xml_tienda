@@ -116,4 +116,50 @@ public class main {
 			return false;
 		}
 	}
+	
+	/**
+	 * Pide una pregunta y devuelve una String como respuesta
+	 * @param pregunta
+	 * @return
+	 */
+	public static String pedirString(String pregunta) {
+		System.out.println(pregunta);
+		String respuesta = scan.nextLine();
+		return respuesta;
+	}
+	
+	/**
+	 * Nos pide una pregunta e intenta pasar el valor pedido a número
+	 * En caso de que de error devuelve -1, si no devuelve el valor dado
+	 * @param pregunta
+	 * @return
+	 */
+	public static int pedirInt(String pregunta) {
+		System.out.println(pregunta);
+		String num = scan.nextLine();
+		try {
+			int numFinal = Integer.parseInt(num);
+			return numFinal;
+		} catch (NumberFormatException e) {
+			return -1;
+		}
+	}
+	
+	/**
+	 * Nos pide una pregunta e intenta pasar el valor pedido a float
+	 * En caso de que de error devuelve -1, si no devuelve el valor dado 
+	 * @param 
+	 * @return
+	 */
+	public static float pedirFloat(String pregunta) {
+		System.out.println(pregunta);
+		String num = scan.nextLine();
+		try {
+			float numFinal = Float.parseFloat(num);
+			return numFinal;
+		} catch (NumberFormatException e) {
+			System.out.println("No válido.");
+			return -1;
+		}
+	}
 }

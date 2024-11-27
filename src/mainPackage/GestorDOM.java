@@ -19,6 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class GestorDOM {
@@ -82,6 +83,58 @@ public class GestorDOM {
 			doc.appendChild(raiz);
 			guardarDocumento();
 		}
+	}
+	
+	public void crearProducto(String compraVenta) {
+		//Pedir datos para la generación del producto
+		String tipo = main.pedirString("Tipo de producto: ");
+		int codigo = -1;
+		while(codigo == -1 || codigoDeProductoExistente(codigo)) {
+			codigo = main.pedirInt("Código de producto: ");
+		}
+		String nombre = main.pedirString("Nombre del producto: ");
+		String descripcion = main.pedirString("Descripción del producto: ");
+		float precio = -1;
+		while(precio == -1) {
+			precio = main.pedirFloat("Precio del producto: ");
+		}
+		
+		// Generar el producto
+		Element productoEl = doc.createElement("producto");
+		productoEl.setAttribute("tipo", compraVenta);
+		productoEl.setAttribute("codigo", compraVenta);
+		Element nombreEl = doc.createElement("nombre");
+		nombreEl.setTextContent(nombre);
+		Element descEl = doc.createElement("descripcion");
+		descEl.setTextContent(descripcion);
+		Element precioEl = doc.createElement("precio");
+		precioEl.setTextContent(String.valueOf(precio));
+		
+		productoEl.appendChild(nombreEl);
+		productoEl.appendChild(descEl);
+		productoEl.appendChild(precioEl);
+		
+		switch(compraVenta) {
+			case "compra":
+				
+				break;
+			case "venta":
+				break;
+		}
+	}
+	
+	public boolean codigoDeProductoExistente(int codigo) {
+		Boolean encontrado = false;
+		NodeList listado = doc.getElementsByTagName("productos");
+		String codeString = String.valueOf(codigo);
+		for(int i = 0; i < listado.getLength(); i++) {
+			Element e = (Element)listado.item(i);
+			if(codeString.equals( e.getAttribute("codigo"))) {
+				encontrado = true;
+				System.out.println("Código ya ingresado. Intente otro.");
+			}
+		}
+		return encontrado;
 	}
 	
 	/*
