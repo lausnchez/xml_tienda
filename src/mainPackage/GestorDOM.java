@@ -81,6 +81,10 @@ public class GestorDOM {
 			this.doc = dBuilder.newDocument();
 			Element raiz = doc.createElement("datos");
 			doc.appendChild(raiz);
+			Element compras = doc.createElement("compras");
+			Element ventas = doc.createElement("ventas");
+			raiz.appendChild(compras);
+			raiz.appendChild(ventas);
 			guardarDocumento();
 		}
 	}
@@ -116,9 +120,12 @@ public class GestorDOM {
 		
 		switch(compraVenta) {
 			case "compra":
-				
+				Element compra = (Element)doc.getElementsByTagName("compras").item(0);
+				productoEl.appendChild(compra);
 				break;
 			case "venta":
+				Element venta = (Element)doc.getElementsByTagName("ventas").item(0);
+				productoEl.appendChild(venta);
 				break;
 		}
 	}

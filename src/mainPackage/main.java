@@ -99,12 +99,12 @@ public class main {
 	}
 		
 	private static void agregarVenta() {
-		
+		gDOM.crearProducto("venta");
 		gDOM.guardarDocumento();
 	}
 	
 	private static void agregarCompra() {
-		
+		gDOM.crearProducto("compra");
 		gDOM.guardarDocumento();
 	}
 	
