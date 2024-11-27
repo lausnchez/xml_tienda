@@ -7,6 +7,8 @@
 4. Mostrar los productos cuyo precio sea mayor que el leído por teclado
 5. Mostrar los productor del tipo del leído por teclado
 6. Mostrar todos los productos que sean de un tipo leído por teclado y tengan un precio superior a la media
+7. Elimina todos los productos cuyo precio sea menor al insertado por teclado
+8. Volcar todas las compras a un fichero csv y todas las ventas a un fichero de acceso directo.
 
 ## Formato final del XML
 ```
