@@ -2,7 +2,7 @@
 >[!IMPORTANT]
 > Práctica importante para el examen, se tomará como ejercicio de preparación
 
-[x] Menú <br>
+:white_check_mark: Menú <br>
 [x]]Agregar Compra o Venta <br>
 [x] Mostrar datos<br>
 [ ] Mostrar los productos cuyo precio sea mayor que el leído por teclado<br>
