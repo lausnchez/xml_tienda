@@ -175,7 +175,9 @@ public class GestorDOM {
 		
 	}
 	
-	
+	/**
+	 * Muestra todos los productos del listado
+	 */
 	public void mostrarTodosDatos() {
 		NodeList listado = doc.getElementsByTagName("producto");
 		for(int i = 0; i < listado.getLength(); i++) {
@@ -184,6 +186,43 @@ public class GestorDOM {
 		}
 	}
 	
+	/**
+	 * Muestra los productos de un tipo específico pedido por el usuario
+	 */
+	public void mostrarPorTipo() {
+		System.out.println("Tipo que desea buscar: ");
+		String busqueda = scan.nextLine();
+		NodeList listado = doc.getElementsByTagName("producto");
+		int contador = 0;
+		for(int i = 0; i < listado.getLength(); i++) {
+			Element producto = (Element)listado.item(i);
+			if(producto.getAttribute("tipo").equalsIgnoreCase(busqueda)) {
+				mostrarUnProducto(producto);
+				contador++;
+			}		
+		}
+		if(contador == 0) System.out.println("No se encontraron resultados");
+	}
+	
+	/**
+	 * Pide un precio por teclado y muestra los productos con un precio mayor
+	 */
+	public void mostrarMayorPrecioTeclado() {
+		float precio = main.pedirFloat("Precio mínimo a buscar: ");
+		int contador = 0;
+		if(precio > 0) {
+			NodeList listado = doc.getElementsByTagName("producto");
+			for(int i = 0; i < listado.getLength(); i++) {
+				Element producto = (Element)listado.item(i);
+				float precioEncontrado = Float.parseFloat(producto.getElementsByTagName("precio").item(0).getTextContent());
+				if(precioEncontrado > precio) {
+					mostrarUnProducto(producto);
+					contador++;
+				}
+			}
+			if(contador == 0) System.out.println("No se encontraron resultados");
+		}	
+	}
 	
 	/*
 	public void inicializarArchivoNuevo() {

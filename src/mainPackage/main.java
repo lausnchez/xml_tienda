@@ -60,15 +60,19 @@ public class main {
 
 	}
 	
+	
 	private static void menu() {
 		int opcion = 0;
 		do {
 			System.out.println("Compras & Ventas -------------------------------------------------------\n");
 			System.out.println("1. Mostrar todos los datos");
 			System.out.println("2. Agregar venta o compra");
-			System.out.println("3. Mostrar");
-			System.out.println("4. Mostrar los productos cuyo precio sea mayor que el leído por teclado");
-			System.out.println("5. Mostrar los productor del tipo del leído por teclado");
+			System.out.println("3. Mostrar los productos cuyo precio sea mayor que el leído por teclado");
+			System.out.println("4. Mostrar los producto del tipo del leído por teclado");
+			System.out.println("5. Mostrar todos los productos que sean de un tipo leido por teclado y \n tengan un precio superior a la media");
+			System.out.println("6. Elimina todos los productos cuyo precio sea menor al insertado por \n teclado");
+			System.out.println("7. Eliminar por código");
+			System.out.println("8. Volcar compras en .csv y ventas en .dat");
 			System.out.println("\n0. Cerrar el programa");
 			System.out.println("------------------------");
 			System.out.print("Opcion: ");
@@ -98,7 +102,10 @@ public class main {
 				}
 				break;
 			case 3:
-
+				gDOM.mostrarMayorPrecioTeclado();
+				break;
+			case 4:
+				gDOM.mostrarPorTipo();
 				break;
 			case 0:
 				break;

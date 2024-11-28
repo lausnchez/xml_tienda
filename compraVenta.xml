@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <datos>
+        
     <compras>
+                
         <producto codigo="2" tipo="Libro">
+                        
             <nombre>El Hobbit</nombre>
+                        
             <descripcion>Un buen libro</descripcion>
+                        
             <precio>22.5</precio>
+                    
         </producto>
+            
     </compras>
+        
     <ventas>
+                
         <producto codigo="1" tipo="Movil">
+                        
             <nombre>IPhone 16</nombre>
+                        
             <descripcion>Movil un poco caro</descripcion>
+                        
             <precio>1200.0</precio>
+                    
+        </producto>
+            
+        <producto codigo="3" tipo="Movil">
+            <nombre>Galaxy mini</nombre>
+            <descripcion>Movil mu viejo</descripcion>
+            <precio>200.5</precio>
         </producto>
     </ventas>
+    
 </datos>
