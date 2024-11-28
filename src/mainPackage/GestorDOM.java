@@ -94,6 +94,12 @@ public class GestorDOM {
 		}
 	}
 	
+	/**
+	 * Pide los datos para crear un nuevo producto y los valida
+	 * Crea un producto y dependiendo de lo que le pasemos por
+	 * parámetros lo inserta en compras y ventas
+	 * @param compraVenta "compras" / "ventas"
+	 */
 	public void crearProducto(String compraVenta) {
 		//Pedir datos para la generación del producto
 		String tipo = main.pedirString("Tipo de producto: ");
@@ -135,6 +141,11 @@ public class GestorDOM {
 		}
 	}
 	
+	/**
+	 * Comprueba todos los códigos de producto y devuelve true si encuentra una coincidencia
+	 * @param codigo
+	 * @return
+	 */
 	public boolean codigoDeProductoExistente(int codigo) {
 		Boolean encontrado = false;
 		NodeList listado = doc.getElementsByTagName("producto");
@@ -148,6 +159,31 @@ public class GestorDOM {
 		}
 		return encontrado;
 	}
+	
+	
+	public void mostrarUnProducto(Element producto) {
+		String nombre = producto.getElementsByTagName("nombre").item(0).getTextContent();
+		String descripcion = producto.getElementsByTagName("descripcion").item(0).getTextContent();
+		String precio = producto.getElementsByTagName("precio").item(0).getTextContent();
+		String codigo = producto.getAttribute("codigo");
+		String tipo = producto.getAttribute("tipo");
+		
+		System.out.println("\n " + nombre + "----------------");
+		System.out.println("Código " + codigo + " / Tipo " + tipo);
+		System.out.println("- Descripción: " + descripcion);
+		System.out.println("- Precio: " + precio + "\n");
+		
+	}
+	
+	
+	public void mostrarTodosDatos() {
+		NodeList listado = doc.getElementsByTagName("producto");
+		for(int i = 0; i < listado.getLength(); i++) {
+			Element producto = (Element)listado.item(i);
+			mostrarUnProducto(producto);
+		}
+	}
+	
 	
 	/*
 	public void inicializarArchivoNuevo() {

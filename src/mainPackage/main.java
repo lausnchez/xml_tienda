@@ -76,7 +76,7 @@ public class main {
 			scan.nextLine();
 			switch(opcion) {
 			case 1:
-				mostrarDatos();
+				gDOM.mostrarTodosDatos();
 				break;
 			case 2:
 				System.out.println("1. Venta / 2. Compra");
@@ -110,19 +110,11 @@ public class main {
 		System.out.println("Hasta pronto!");
 	}
 
-	private static void mostrarDatos() {
-		
-		gDOM.guardarDocumento();
-	}
-	
 	/**
-	 * 
+	 * Comprueba que el valor pasado por parámetros es un int
+	 * @param num
+	 * @return
 	 */
-	private static void agregarCompraventa() {
-		
-	}
-
-	
 	private static boolean comprobarInt(String num) {
 		try {
 			Integer.parseInt(num);
