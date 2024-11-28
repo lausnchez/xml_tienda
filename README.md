@@ -5,7 +5,7 @@
 :white_check_mark: Menú <br>
 :white_check_mark: Agregar Compra o Venta <br>
 :white_check_mark: Mostrar datos<br>
-:x: Mostrar los productos cuyo precio sea mayor que el leído por teclado<br>
+:white_check_mark: Mostrar los productos cuyo precio sea mayor que el leído por teclado<br>
 :white_check_mark: Mostrar los productor del tipo del leído por teclado<br>
 :x: Mostrar todos los productos que sean de un tipo leído por teclado y tengan un precio superior a la media<br>
 :x: Elimina todos los productos cuyo precio sea menor al insertado por teclado<br>
