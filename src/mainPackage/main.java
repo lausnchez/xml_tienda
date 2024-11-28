@@ -73,15 +73,32 @@ public class main {
 			System.out.println("------------------------");
 			System.out.print("Opcion: ");
 			opcion = scan.nextInt();
+			scan.nextLine();
 			switch(opcion) {
 			case 1:
 				mostrarDatos();
 				break;
 			case 2:
-				agregarVenta();
+				System.out.println("1. Venta / 2. Compra");
+				int opcionCompraVenta = scan.nextInt();
+				switch(opcionCompraVenta){
+					case 1: 
+						scan.nextLine();
+						gDOM.crearProducto("venta");
+						gDOM.guardarDocumento();
+						break;
+					case 2: 
+						scan.nextLine();
+						gDOM.crearProducto("compra");
+						gDOM.guardarDocumento();
+						break;
+					default: 
+						System.out.println("Valor no válido");
+						break;
+				}
 				break;
 			case 3:
-				agregarCompra();
+
 				break;
 			case 0:
 				break;
@@ -97,16 +114,14 @@ public class main {
 		
 		gDOM.guardarDocumento();
 	}
-		
-	private static void agregarVenta() {
-		gDOM.crearProducto("venta");
-		gDOM.guardarDocumento();
-	}
 	
-	private static void agregarCompra() {
-		gDOM.crearProducto("compra");
-		gDOM.guardarDocumento();
+	/**
+	 * 
+	 */
+	private static void agregarCompraventa() {
+		
 	}
+
 	
 	private static boolean comprobarInt(String num) {
 		try {

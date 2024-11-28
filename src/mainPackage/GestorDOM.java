@@ -2,6 +2,7 @@ package mainPackage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,10 +23,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+
+
 public class GestorDOM {
 	private static String direccionDoc = "./compraventa.xml";
 	private static DocumentBuilder dBuilder;
 	private static Document doc;
+	
+	Scanner scan = new Scanner(System.in);
 	
 	/***
 	 * Primero crea un documentBuilderFactory que se crea una instancia que permite usar el
@@ -99,14 +104,14 @@ public class GestorDOM {
 		String nombre = main.pedirString("Nombre del producto: ");
 		String descripcion = main.pedirString("Descripción del producto: ");
 		float precio = -1;
-		while(precio == -1) {
+		while(precio == -1 || precio < 0) {
 			precio = main.pedirFloat("Precio del producto: ");
 		}
 		
 		// Generar el producto
 		Element productoEl = doc.createElement("producto");
-		productoEl.setAttribute("tipo", compraVenta);
-		productoEl.setAttribute("codigo", compraVenta);
+		productoEl.setAttribute("tipo", tipo);
+		productoEl.setAttribute("codigo", String.valueOf(codigo));
 		Element nombreEl = doc.createElement("nombre");
 		nombreEl.setTextContent(nombre);
 		Element descEl = doc.createElement("descripcion");
@@ -121,18 +126,18 @@ public class GestorDOM {
 		switch(compraVenta) {
 			case "compra":
 				Element compra = (Element)doc.getElementsByTagName("compras").item(0);
-				productoEl.appendChild(compra);
+				compra.appendChild(productoEl);
 				break;
 			case "venta":
 				Element venta = (Element)doc.getElementsByTagName("ventas").item(0);
-				productoEl.appendChild(venta);
+				venta.appendChild(productoEl);
 				break;
 		}
 	}
 	
 	public boolean codigoDeProductoExistente(int codigo) {
 		Boolean encontrado = false;
-		NodeList listado = doc.getElementsByTagName("productos");
+		NodeList listado = doc.getElementsByTagName("producto");
 		String codeString = String.valueOf(codigo);
 		for(int i = 0; i < listado.getLength(); i++) {
 			Element e = (Element)listado.item(i);
