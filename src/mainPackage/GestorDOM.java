@@ -160,7 +160,10 @@ public class GestorDOM {
 		return encontrado;
 	}
 	
-	
+	/**
+	 * Muestra por consola un solo producto
+	 * @param producto
+	 */
 	public void mostrarUnProducto(Element producto) {
 		String nombre = producto.getElementsByTagName("nombre").item(0).getTextContent();
 		String descripcion = producto.getElementsByTagName("descripcion").item(0).getTextContent();
@@ -246,6 +249,10 @@ public class GestorDOM {
 	}
 	
 	
+	/**
+	 * Devuelve la media de precios de todos los productos
+	 * @return
+	 */
 	public float mediaPrecios() {
 		float total = 0;
 		int contador = 0;
@@ -258,6 +265,28 @@ public class GestorDOM {
 		}
 		return total/contador;
 	}
+	
+	
+	/**
+	 * Recibe un precio y elimina los productos que tienen un precio menor
+	 * que él
+	 */
+	public void eliminarProductosMenorPrecio() {
+		float precioBuscar = main.pedirFloat("Inserte un precio: ");
+		if(precioBuscar > 0) {
+			NodeList listado = doc.getElementsByTagName("producto");
+			for(int i = 0; i < listado.getLength(); i++) {
+				Element precioElement = (Element)listado.item(i); 
+				float precioEncontrado = Float.parseFloat(precioElement.getElementsByTagName("precio").item(0).getTextContent());
+				if(precioEncontrado < precioBuscar) {
+					precioElement.getParentNode().removeChild(precioElement);
+					// Primero accedes al padre para borrar desde ahí al hijo
+					System.out.println("Se ha borrado un elemento");
+				}
+			}
+		}
+	}
+	
 	/*
 	public void inicializarArchivoNuevo() {
 		Element raiz = doc.createElement("datos");

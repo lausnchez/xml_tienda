@@ -110,14 +110,17 @@ public class main {
 			case 5:
 				gDOM.mostrarMayorMediaMismoTipo();
 				break;
+			case 6:
+				gDOM.eliminarProductosMenorPrecio();
+				break;
 			case 0:
+				System.out.println("Hasta pronto!");
 				break;
 			default:
 				System.out.println("Número no válido");
 				break;
 			}
 		}while(opcion != 0);
-		System.out.println("Hasta pronto!");
 	}
 
 	/**
