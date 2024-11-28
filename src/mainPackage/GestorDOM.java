@@ -224,6 +224,40 @@ public class GestorDOM {
 		}	
 	}
 	
+	/**
+	 * Pide un precio y un tipo por teclado al usuario y muestra los productos
+	 * del mismo tipo y con un precio mayor al insertado.
+	 */
+	public void mostrarMayorMediaMismoTipo() {
+		System.out.println("Media: " + mediaPrecios());
+		String tipo = main.pedirString("Tipo a buscar: ");
+		int contador = 0;
+		NodeList listado = doc.getElementsByTagName("producto");
+		for(int i = 0; i < listado.getLength(); i++) {
+			Element producto = (Element)listado.item(i);
+			float precioEncontrado = Float.parseFloat(producto.getElementsByTagName("precio").item(0).getTextContent());
+			String tipoEncontrado = producto.getAttribute("tipo");
+			if(mediaPrecios() < precioEncontrado && tipo.equalsIgnoreCase(tipoEncontrado)) {
+				mostrarUnProducto(producto);
+				contador++;
+			}
+		}	
+		if(contador == 0) System.out.println("No se encontraron resultados");
+	}
+	
+	
+	public float mediaPrecios() {
+		float total = 0;
+		int contador = 0;
+		NodeList listado = doc.getElementsByTagName("producto");
+		for(int i = 0; i < listado.getLength(); i++) {
+			Element producto = (Element)listado.item(i);
+			float precioEncontrado = Float.parseFloat(producto.getElementsByTagName("precio").item(0).getTextContent());	
+			total += precioEncontrado;
+			contador++;
+		}
+		return total/contador;
+	}
 	/*
 	public void inicializarArchivoNuevo() {
 		Element raiz = doc.createElement("datos");

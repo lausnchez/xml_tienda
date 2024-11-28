@@ -63,7 +63,7 @@ public class main {
 	
 	private static void menu() {
 		int opcion = 0;
-		do {
+		do {			
 			System.out.println("Compras & Ventas -------------------------------------------------------\n");
 			System.out.println("1. Mostrar todos los datos");
 			System.out.println("2. Agregar venta o compra");
@@ -106,6 +106,9 @@ public class main {
 				break;
 			case 4:
 				gDOM.mostrarPorTipo();
+				break;
+			case 5:
+				gDOM.mostrarMayorMediaMismoTipo();
 				break;
 			case 0:
 				break;
